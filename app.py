@@ -101,20 +101,23 @@ def api_solve():
     with closing(get_conn()) as conn, conn:
         conn.execute(
             """INSERT INTO hands
-               (hero_cards, board_cards, position, street,
-                pot_size, facing_bet, advice_action, raise_size)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+            (hero_cards, board_cards, position, street,
+                pot_size, facing_bet, num_villains,
+                advice_action, raise_size)
+            VALUES (?,?,?,?,?,?,?,?,?)""",
             (
-                "".join(data["hero_cards"]),           # compact store
-                "".join(data.get("board_cards", [])),  # may be empty
+                "".join(data["hero_cards"]),
+                "".join(data.get("board_cards", [])),
                 data["position"],
                 data["street"],
                 data["pot_size"],
                 data["facing_bet"],
+                data["num_villains"],            # ← NEW
                 result["advice"],
                 result.get("raise_size"),
             ),
         )
+
     return jsonify(result)
 
 
