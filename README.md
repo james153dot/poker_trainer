@@ -36,7 +36,7 @@ source venv/Scripts/activate
 pip install -r requirements.txt
 ```
 
-2. **Create the database**
+2. **Create the database** (sqlite3 REQUIRED)
 
 ```bash
 # removes old database
