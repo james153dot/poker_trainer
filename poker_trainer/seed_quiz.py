@@ -100,7 +100,7 @@ def build_row():
 # ------------------------------------------------------------------------
 
 
-def main(count: int = 10):
+def main(count: int = 50):
     """Insert *count* rows into quiz_bank."""
     conn = sqlite3.connect(DB_FILE)
     cur = conn.cursor()
@@ -118,6 +118,7 @@ def main(count: int = 10):
 # Entry‑point guard
 # ------------------------------------------------------------------------
 if __name__ == "__main__":
-    # Allow optional CLI arg for number of rows
-    n = int(sys.argv[1]) if len(sys.argv) > 1 else 10
+    # default 50 rows
+    n = int(sys.argv[1]) if len(sys.argv) > 1 else 50
     main(n)
+
