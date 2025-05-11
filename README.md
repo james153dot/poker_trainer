@@ -88,7 +88,7 @@ poker_trainer/
 │
 ├── seed_quiz.py          CLI: populate quiz_bank
 │
-├── poker.dc              Database, included for ease of use
+├── poker.db              Database, (not included, self-created)
 │
 ├── README.md             Guide
 │
