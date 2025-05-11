@@ -1,0 +1,92 @@
+{# ---------------------------------------------------------------------------
+#  index.html
+#  ----------
+#  Play‑mode page. Inherits global layout.html and injects content.
+# --------------------------------------------------------------------------- #}
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- SECTION 1 : Card Picker -------------------------------------------------
+     The <div id="card-grid"> is populated at runtime by cardpicker.js.
+     The <p id="chosen"> text is updated by JS each time selection changes.
+----------------------------------------------------------------------------->
+    <section id="picker">
+        <h2>1. Pick your two cards</h2>
+
+    <!-- The 52 mini‑cards will be rendered here -->
+        <div id="card-grid" class="grid"></div>
+
+    <!-- Live summary of what the user has selected -->
+        <p id="chosen">Selected: —</p>
+    </section>
+
+<!-- SECTION 2 : Situation Inputs -------------------------------------------
+     Inputs are grouped inside .inputs grid for auto‑wrapping layout.
+     Each <label> wraps both caption and form control (improves a11y).
+------------------------------------------------------------------------------>
+    <section id="inputs" class="inputs">
+        <h2>2. Situation</h2>
+
+    <!-- Effective pot size before the facing bet -->
+        <label>
+            Pot size ($)
+            <input type="number" id="pot" value="10" min="0" step="0.5">
+        </label>
+
+    <!-- Size of the bet we are facing -->
+        <label>
+            Facing bet ($)
+            <input type="number" id="bet" value="5" min="0" step="0.5">
+        </label>
+
+    <!-- Number of opponents left in hand (1 = heads‑up) -->
+        <label>
+            Villains
+            <input type="number" id="villains" value="1" min="1">
+        </label>
+
+    <!-- Our position shorthand -->
+        <label>
+            Position
+            <select id="pos">
+                <option>BTN</option>
+                <option>CO</option>
+                <option>HJ</option>
+                <option>UTG</option>
+                <option>SB</option>
+                <option>BB</option>
+            </select>
+        </label>
+
+    <!-- Current street of the hand -->
+        <label>
+            Street
+            <select id="street">
+                <option>preflop</option>
+                <option>flop</option>
+                <option>turn</option>
+                <option>river</option>
+            </select>
+        </label>
+    </section>
+
+<!-- Solve button is disabled until exactly 2 cards are selected ------------>
+    <button id="solve-btn" disabled>Solve Hand</button>
+
+<!-- SECTION 3 : Result card ------------------------------------------------->
+    <section id="result" class="hidden">
+        <h2>Advice</h2>
+    <!-- JS fills these <p> nodes -->
+        <p id="advice-text"></p>
+        <p id="equity-text"></p>
+    </section>
+
+<!-- SECTION 4 : Play‑mode history (last 30) -------------------------------->
+    <section id="history">
+        <h2>Recent Hands</h2>
+        <ul id="hist-list"></ul>
+    </section>
+
+<!-- JavaScript : one ES‑module entry point — all other scripts are imported -->
+    <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
