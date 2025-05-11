@@ -21,17 +21,30 @@ It has two core modes:
 1. **Clone & install**
 
 ```bash
-git clone https://github.com/your‑username/poker_trainer.git
+git clone https://github.com/james153dot/poker_trainer.git
 cd poker_trainer
-python -m venv venv && source venv/bin/activate
+# ── Create the venv
+python -m venv venv
+
+# macOS / Linux / WSL:
+source venv/bin/activate
+
+# Windows – Git Bash inside VS Code:
+source venv/Scripts/activate
+
+# installment of libraries
 pip install -r requirements.txt
 ```
 
-2. **Create the database** # THIS STEP CAN BE SKIPPED, DATABASE INCLUDED
+2. **Create the database**
 
 ```bash
+# removes old database
+rm poker.db  
+# Creates new database
 sqlite3 poker.db < schema.sql
-python seed_quiz.py   # optional: insert 20 curated quiz spots
+# Populates new database with quiz questions
+python seed_quiz.py 
 ```
 
 3. **Run**
