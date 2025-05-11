@@ -1,0 +1,81 @@
+/* ==========================================================================
+   styles.css
+   ----------
+   Pure CSS (no framework) used by BOTH pages.
+   Layout philosophy:
+     * Max‑width wrapper for readability.
+     * CSS Grid for card layout and input form.
+     * Utility classes (.hidden, .red, etc.).
+   ======================================================================== */
+
+body {
+    font-family: system-ui, sans-serif;
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 1rem;
+}
+
+/* ---------- Top navigation bar ----------------------------------------- */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.navbox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.caption {
+    font-size: 0.75rem;
+    color: #555;
+    margin-top: 0.2rem;
+}
+
+/* ---------- Card grid (13 columns × 4 rows) ---------------------------- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(13, 2.1rem);
+    gap: .25rem;
+}
+
+.card {
+    border: 1px solid #888;
+    text-align: center;
+    padding: .2rem 0;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 600;
+}
+
+.card.red {
+    color: crimson;
+}
+
+.card.selected {
+    background: #4caf50;
+    color: white;
+}
+
+/* ---------- Utility helpers ------------------------------------------- */
+.hidden {
+    display: none;
+}
+
+/* ---------- Situation inputs (responsive auto-wrap) ------------------- */
+.inputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: .6rem 1.2rem;
+    align-items: start;
+}
+
+.inputs label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    gap: .25rem;
+}
