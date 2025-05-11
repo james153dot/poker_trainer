@@ -165,3 +165,7 @@ Build: pip install -r requirements.txt
 
 Enjoy the trainer—may your EV lines be positive!
 
+## 7 VIDEO URL
+
+https://youtu.be/kcKR4-KPkCs
+
