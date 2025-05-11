@@ -6,10 +6,11 @@ CREATE TABLE IF NOT EXISTS hands (
     street        TEXT,
     pot_size      REAL,
     facing_bet    REAL,
+    num_villains  INTEGER,   
     advice_action TEXT,
     raise_size    REAL,
-    user_action   TEXT,   
-    correct       BOOLEAN,  
+    user_action   TEXT,
+    correct       BOOLEAN,
     ts            TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
