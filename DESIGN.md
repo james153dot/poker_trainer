@@ -17,39 +17,26 @@ Design objectives:
 ---
 
 ## 2  Component Map
-```
-          +------------+
-          |  Browser   |
-          | (HTML/JS)  |
-          +-----+------+
-                |
-                | fetch /api/*
-+---------------v---------------+
-|            Flask              |
-|  /api/solve    /api/quiz/*    |
-+-------+---------------+-------+
-        |               |
-        |               +------------------+
-        |                                  |
-+-------v------+                 +---------v---------+
-|  Solver HU   |  (Python eval)  |  Solver multi-way |
-| evaluator.py |                 |   treys C core    |
-+--------------+                 +---------+---------+
-                                            |
-+-------------------------------------------v---+
-|                    SQLite                    |
-|   tables: hands, quiz_bank,  (future users)  |
-+----------------------------------------------+
-```
-
-```mermaid
 flowchart TD
-    A[Browser (HTML/JS)] -->|fetch /api/*| B[Flask: /api/solve, /api/quiz/*]
-    B -->|solve| C[Solver HU: evaluator.py]
-    B -->|quiz| D[Solver multi-way: treys C core]
-    C --> E[SQLite DB: hands, quiz_bank, users (future)]
+    subgraph Frontend
+        A[Browser (HTML/JS)]
+    end
+
+    subgraph Backend
+        B[Flask: /api/solve, /api/quiz/*]
+        C[Solver HU: evaluator.py]
+        D[Solver multi-way: treys C core]
+    end
+
+    subgraph Database
+        E[SQLite: hands, quiz_bank, users (future)]
+    end
+
+    A -->|fetch /api/*| B
+    B -->|solve| C
+    B -->|quiz| D
+    C --> E
     D --> E
-```
 
 ---
 
