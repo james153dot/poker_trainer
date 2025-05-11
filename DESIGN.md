@@ -17,19 +17,24 @@ Design objectives:
 ---
 
 ## 2  Component Map
+
+```mermaid
 flowchart TD
+    %% Front-end
     subgraph Frontend
         A[Browser (HTML/JS)]
     end
 
+    %% Back-end
     subgraph Backend
-        B[Flask: /api/solve, /api/quiz/*]
-        C[Solver HU: evaluator.py]
-        D[Solver multi-way: treys C core]
+        B[[Flask<br>/api/solve<br>/api/quiz/*]]
+        C([Solver HU<br>evaluator.py])
+        D([Solver multi-way<br>treys C core])
     end
 
+    %% Database
     subgraph Database
-        E[SQLite: hands, quiz_bank, users (future)]
+        E[(SQLite DB<br>tables: hands, quiz_bank,<br>(future: users))]
     end
 
     A -->|fetch /api/*| B
@@ -37,6 +42,8 @@ flowchart TD
     B -->|quiz| D
     C --> E
     D --> E
+```
+
 
 ---
 
