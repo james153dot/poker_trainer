@@ -1,7 +1,17 @@
 # Poker Trainer – DESIGN.md
 
 ## 1  Architecture Diagram
-<pre> ```mermaid flowchart LR A[Browser<br>ES‑Module JS] -- fetch --> B[(Flask routes)] B -->|/api/solve| C[solver.py] C -->|equity + advice| B B -->|INSERT| D[(SQLite)] B -->|SELECT| D B -->|/api/quiz/*| E[quiz_backend.py] E --> D ``` </pre>
+
+```mermaid
+flowchart TD
+    A[Browser<br>ES‑Module JS] --> B[(Flask routes)]
+    B -->|/api/solve| C[solver.py]
+    C -->|equity + advice| B
+    B -->|INSERT| D[(SQLite)]
+    B -->|SELECT| D
+    B -->|/api/quiz/*| E[quiz_backend.py]
+    E --> D
+```
 
 ## 2  Core Modules
 
