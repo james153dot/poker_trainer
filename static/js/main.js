@@ -78,15 +78,22 @@ if (qs("solve-btn")) { // sentinel: only exists on Play page
         const hist = await fetch("/api/history").then(r => r.json());
         const ul = qs("hist-list");
         ul.innerHTML = "";
+
         hist.forEach(h => {
             const li = document.createElement("li");
+
+            // Build a verbose, human-readable summary
             li.textContent =
-                `${h.hero_cards} » ${h.advice_action}` +
-                (h.raise_size ? ` @${h.raise_size}` : "");
+                `${h.hero_cards} | pot $${h.pot_size} facing $${h.facing_bet} ` +
+                `| ${h.num_villains} villain${h.num_villains > 1 ? "s" : ""} ` +
+                `| ${h.position} ${h.street} ` +
+                `⇒ ${h.advice_action.toUpperCase()}` +
+                (h.raise_size ? ` $${h.raise_size}` : "");
+
             ul.appendChild(li);
         });
     }
-    loadHist(); // initial load
+
 }
 
 /* ========================================================================
