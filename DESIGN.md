@@ -44,13 +44,11 @@ Design objectives:
 
 ```mermaid
 flowchart TD
-    A[Browser<br>ES‑Module JS] --> B[(Flask routes)]
-    B -->|/api/solve| C[solver.py]
-    C -->|equity + advice| B
-    B -->|INSERT| D[(SQLite)]
-    B -->|SELECT| D
-    B -->|/api/quiz/*| E[quiz_backend.py]
-    E --> D
+    A[Browser<br>(HTML/JS)] -->|fetch /api/*| B[Flask<br>/api/solve<br>/api/quiz/*]
+    B -->|solve| C[Solver HU<br>evaluator.py<br>(Python eval)]
+    B -->|quiz| D[Solver multi-way<br>treys C core]
+    D --> E[SQLite<br>tables: hands, quiz_bank,<br>(future: users)]
+    C --> E
 ```
 
 ---
