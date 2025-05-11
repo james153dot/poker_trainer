@@ -3,7 +3,7 @@
 ---
 
 ## 1  Intent
-*Deliver a portable, battery‑included trainer for NL Texas Hold’em that runs
+*Deliver a trainer for NL Texas Hold’em that runs
 locally, solves common spots fast, and teaches via quizzes—all without
 Docker, Node, or external services.*
 
