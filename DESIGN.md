@@ -20,26 +20,37 @@ Design objectives:
 
 ```mermaid
 flowchart TD
+
+    %% Define nodes
+    A[Browser]
+    B[Flask API]
+    C[HU Evaluator]
+    D[Multi-way Solver]
+    E[SQLite DB]
+
+    %% Grouping
     subgraph Frontend
-        A[Browser (HTML + JS)]
+        A
     end
 
     subgraph Backend
-        B[Flask API]
-        C[Heads-Up Evaluator (evaluator.py)]
-        D[Multi-way Solver (treys C core)]
+        B
+        C
+        D
     end
 
     subgraph Database
-        E[SQLite DB: hands, quiz_bank, users]
+        E
     end
 
-    A -->|fetch API| B
+    %% Connections
+    A -->|fetch /api/*| B
     B -->|solve| C
     B -->|quiz| D
     C --> E
     D --> E
 ```
+
 
 
 
