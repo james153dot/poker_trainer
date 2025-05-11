@@ -42,6 +42,17 @@ Design objectives:
 +----------------------------------------------+
 ```
 
+```mermaid
+flowchart TD
+    A[Browser<br>ES‑Module JS] --> B[(Flask routes)]
+    B -->|/api/solve| C[solver.py]
+    C -->|equity + advice| B
+    B -->|INSERT| D[(SQLite)]
+    B -->|SELECT| D
+    B -->|/api/quiz/*| E[quiz_backend.py]
+    E --> D
+```
+
 ---
 
 ## 3  Database Basics
