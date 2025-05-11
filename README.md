@@ -18,7 +18,7 @@ It has two core modes:
 
 ## 2  Quick Start
 
-1. **Clone & install** (all testing done in bash in VSCode)
+1. **Clone & install** (all testing done in bash in VSCode(Windows))
 
 ```bash
 git clone https://github.com/james153dot/poker_trainer.git
