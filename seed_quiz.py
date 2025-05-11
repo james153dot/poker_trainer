@@ -121,4 +121,3 @@ if __name__ == "__main__":
     # default 50 rows
     n = int(sys.argv[1]) if len(sys.argv) > 1 else 50
     main(n)
-
